@@ -49,6 +49,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     // Singletons initialization order needs to be preserved, first events and
     // then modules to guarantee the reverse destruction order.
+    SystemMenuHelperInstace();
     powertoys_events();
     modules();
 
@@ -56,9 +57,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Load Powertyos DLLS
     // For now only load known DLLs
     std::unordered_set<std::wstring> known_dlls = {
-      L"shortcut_guide.dll",
+      L"always_on_top.dll",
       L"fancyzones.dll",
-      L"PowerRenameExt.dll"
+      L"PowerRenameExt.dll",
+      L"shortcut_guide.dll"
     };
     for (auto& file : std::filesystem::directory_iterator(L"modules/")) {
       if (file.path().extension() != L".dll")
