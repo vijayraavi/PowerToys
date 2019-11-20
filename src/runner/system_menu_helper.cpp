@@ -35,7 +35,7 @@ void SystemMenuHelper::ProcessSelectedItem(PowertoyModuleIface* module, HWND win
           }
         }
       }
-      return;
+      break;
     }
   }
   for (auto it = begin(PendingActions); it != end(PendingActions);) {
