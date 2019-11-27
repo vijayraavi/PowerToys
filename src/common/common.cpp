@@ -229,6 +229,24 @@ std::wstring get_process_path(DWORD pid) noexcept {
   return name;
 }
 
+bool run_elevated(const std::wstring& file, const std::wstring& params) {
+  SHELLEXECUTEINFOW exec_info = { 0 };
+  exec_info.cbSize = sizeof(SHELLEXECUTEINFOW);
+  exec_info.lpVerb = L"runas";
+  exec_info.lpFile = file.c_str();
+  exec_info.lpParameters = params.c_str();
+  exec_info.hwnd = 0;
+  exec_info.fMask = SEE_MASK_NOCLOSEPROCESS;
+  exec_info.lpDirectory = 0;
+  exec_info.hInstApp = 0;
+
+  if (ShellExecuteExW(&exec_info)) {
+    return exec_info.hProcess != nullptr;
+  } else {
+    return false;
+  }
+}
+
 std::wstring get_process_path(HWND window) noexcept {
   const static std::wstring app_frame_host = L"ApplicationFrameHost.exe";
   DWORD pid{};

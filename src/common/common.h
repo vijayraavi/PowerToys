@@ -1,5 +1,6 @@
 #pragma once
 #include <optional>
+#include <string>
 #include <Windows.h>
 
 // Returns RECT with positions of the minmize/maximize buttons of the given window.
@@ -49,6 +50,9 @@ bool is_process_elevated();
 
 // Drops the elevated privilages if present
 bool drop_elevated_privileges();
+
+// Run command as elevated user, returns true if succeeded
+bool run_elevated(const std::wstring& file, const std::wstring& params);
 
 // Get the executable path or module name for modern apps
 std::wstring get_process_path(DWORD pid) noexcept;
