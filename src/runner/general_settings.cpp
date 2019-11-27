@@ -8,6 +8,7 @@
 using namespace web;
 
 static std::wstring settings_theme = L"system";
+static bool run_as_elevated = false;
 
 web::json::value load_general_settings() {
   auto loaded = PTSettingsHelper::load_general_settings();
@@ -18,6 +19,9 @@ web::json::value load_general_settings() {
     }
   } else {
     settings_theme = L"system";
+  }
+  if (loaded.has_boolean_field(L"run_elevated")) {
+    run_as_elevated = loaded.as_object()[L"run_elevated"].as_bool();
   }
   return loaded;
 }
@@ -32,6 +36,10 @@ web::json::value get_general_settings() {
     enabled.as_object()[name] = json::value::boolean(powertoy.is_enabled());
   }
   result.as_object()[L"enabled"] = enabled;
+
+  bool is_elevated = is_process_elevated();
+  result.as_object()[L"is_elevated"] = json::value::boolean(is_elevated);
+  result.as_object()[L"run_elevated"] = json::value::boolean(run_as_elevated);
 
   result.as_object()[L"theme"] = json::value::string(settings_theme);
   result.as_object()[L"system_theme"] = json::value::string(WindowsColors::is_dark_mode() ? L"dark" : L"light");
@@ -70,6 +78,9 @@ void apply_general_settings(const json::value& general_configs) {
   }
   if (general_configs.has_string_field(L"theme")) {
     settings_theme = general_configs.at(L"theme").as_string();
+  }
+  if (general_configs.has_boolean_field(L"run_elevated")) {
+    run_as_elevated = general_configs.at(L"run_elevated").as_bool();
   }
   json::value save_settings = get_general_settings();
   PTSettingsHelper::save_general_settings(save_settings);

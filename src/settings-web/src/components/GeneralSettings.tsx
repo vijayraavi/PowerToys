@@ -7,12 +7,14 @@ import { Separator } from 'office-ui-fabric-react/lib/Separator';
 export class GeneralSettings extends React.Component <any, any> {
   references: any = {};
   startup_reference: any;
+  elevated_reference: any;
   theme_reference: any;
   parent_on_change: Function;
   constructor(props: any) {
     super(props);
     this.references={};
     this.startup_reference=null;
+    this.elevated_reference=null;
     this.parent_on_change = props.on_change;
     this.state = {
       settings_key: props.settings_key,
@@ -38,6 +40,7 @@ export class GeneralSettings extends React.Component <any, any> {
     let result : any = {};
     result[this.state.settings_key]= {
       startup: this.startup_reference.get_value().value,
+      run_elevated: this.elevated_reference.get_value().value,
       theme: this.theme_reference.get_value().value,
       enabled: enabled
     };
@@ -120,6 +123,18 @@ export class GeneralSettings extends React.Component <any, any> {
           on_change={this.parent_on_change}
           ref={(input) => {this.startup_reference=input;}}
         />
+        <BoolToggleSettingsControl
+          setting={{display_name: 'Run PowerToys with elevated privileges', value: this.state.settings.general.run_elevated}}
+          on_change={this.parent_on_change}
+          ref={(input) => {this.elevated_reference=input;}}
+        />
+        {(
+          this.state.settings.general.is_elevated
+          ?
+          <Text>PowerToys are currently running with elevated privileges.</Text>
+          :
+          <Text>PowerToys are currently running without elevated privileges.</Text>
+        )}
         <ChoiceGroupSettingsControl
           setting={{display_name: 'Chose Settings color',
                     value: this.state.settings.general.theme,
