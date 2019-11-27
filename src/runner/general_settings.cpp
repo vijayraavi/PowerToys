@@ -7,6 +7,7 @@
 
 using namespace web;
 
+static bool settings_loaded = false;
 static std::wstring settings_theme = L"system";
 static bool run_as_elevated = false;
 
@@ -23,10 +24,14 @@ web::json::value load_general_settings() {
   if (loaded.has_boolean_field(L"run_elevated")) {
     run_as_elevated = loaded.as_object()[L"run_elevated"].as_bool();
   }
+  settings_loaded = true;
   return loaded;
 }
 
 web::json::value get_general_settings() {
+  if (!settings_loaded) {
+    load_general_settings();
+  }
   json::value result = json::value::object();
   bool startup = is_auto_start_task_active_for_this_user();
   result.as_object()[L"startup"] = json::value::boolean(startup);

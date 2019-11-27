@@ -7,6 +7,7 @@
 #include "lowlevel_keyboard_event.h"
 #include "trace.h"
 #include "general_settings.h"
+#include "restart_elevated.h"
 
 #include <common/dpi_aware.h>
 
@@ -24,16 +25,7 @@ void chdir_current_executable() {
   }
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-  WCHAR username[UNLEN + 1];
-  DWORD username_length = UNLEN + 1;
-  GetUserNameW(username, &username_length);
-  auto runner_mutex = CreateMutexW(NULL, TRUE, (std::wstring(L"Local\\PowerToyRunMutex") + username).c_str());
-  if (runner_mutex == NULL || GetLastError() == ERROR_ALREADY_EXISTS) {
-    // The app is already running
-    return 0;
-  }
-
+int runner() {
   DPIAware::EnableDPIAwarenessForThisProcess();
   
   #if _DEBUG && _WIN64
@@ -76,11 +68,44 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Trace::EventLaunch(get_product_version());
 
     result = run_message_loop();
-  } catch (std::runtime_error& err) {
+  } catch (std::runtime_error & err) {
     std::string err_what = err.what();
-    MessageBoxW(NULL, std::wstring(err_what.begin(),err_what.end()).c_str(), L"Error", MB_OK | MB_ICONERROR);
+    MessageBoxW(NULL, std::wstring(err_what.begin(), err_what.end()).c_str(), L"Error", MB_OK | MB_ICONERROR);
     result = -1;
   }
   Trace::UnregisterProvider();
+  return result;
+}
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+  WCHAR username[UNLEN + 1];
+  DWORD username_length = UNLEN + 1;
+  GetUserNameW(username, &username_length);
+  auto runner_mutex = CreateMutexW(NULL, TRUE, (std::wstring(L"Local\\PowerToyRunMutex") + username).c_str());
+  if (runner_mutex == NULL || GetLastError() == ERROR_ALREADY_EXISTS) {
+    // The app is already running
+    return 0;
+  }
+  int result = 0;
+  try {
+    auto general_settings = get_general_settings();
+    int rvalue = 0;
+    if (is_process_elevated() ||
+      general_settings.at(L"run_elevated").as_bool() == false) {
+      result = runner();
+    }
+    else {
+      schedlue_restart_as_elevated();
+      result = 0;
+    }
+  }
+  catch (std::runtime_error & err) {
+    std::string err_what = err.what();
+    MessageBoxW(NULL, std::wstring(err_what.begin(), err_what.end()).c_str(), L"Error", MB_OK | MB_ICONERROR);
+    result = -1;
+  }
+  ReleaseMutex(runner_mutex);
+  CloseHandle(runner_mutex);
+  restart_as_elevated_if_scheduled();
   return result;
 }
