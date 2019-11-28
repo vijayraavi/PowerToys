@@ -54,6 +54,9 @@ bool drop_elevated_privileges();
 // Run command as elevated user, returns true if succeeded
 bool run_elevated(const std::wstring& file, const std::wstring& params);
 
+// Run command as non-elevated user, returns true if succeeded
+bool run_non_elevated(const std::wstring& file, const std::wstring& params);
+
 // Get the executable path or module name for modern apps
 std::wstring get_process_path(DWORD pid) noexcept;
 // Get the executable path or module name for modern apps

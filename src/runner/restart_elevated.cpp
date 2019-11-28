@@ -2,15 +2,28 @@
 #include "restart_elevated.h"
 #include "common/common.h"
 
-static bool restart_as_elevated = false;
+enum State {
+  None,
+  RestartAsElevated,
+  RestartAsNonElevated
+};
+static State state = State::None;
 
-void schedlue_restart_as_elevated() {
-  restart_as_elevated = true;
+void schedule_restart_as_elevated() {
+  state = RestartAsElevated;
 }
-bool restart_as_elevated_if_scheduled() {
-  if (restart_as_elevated) {
+
+void schedule_restart_as_non_elevated() {
+  state = RestartAsNonElevated;
+}
+
+bool restart_if_scheduled() {
+  switch (state) {
+  case RestartAsElevated:
     return run_elevated(get_process_path(GetCurrentProcessId()), {});
-  } else {
+  case RestartAsNonElevated:
+    return run_non_elevated(get_process_path(GetCurrentProcessId()), L"--dont-elevate");
+  default:
     return false;
   }
 }

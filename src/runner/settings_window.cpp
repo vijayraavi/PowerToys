@@ -10,6 +10,8 @@
 #include "tray_icon.h"
 #include "general_settings.h"
 #include "common/windows_colors.h"
+#include "common/common.h"
+#include "restart_elevated.h"
 
 #define BUFSIZE 1024
 
@@ -40,9 +42,17 @@ json::value get_all_settings() {
 
 void dispatch_json_action_to_module(const json::value& powertoys_configs) {
   for (auto powertoy_element : powertoys_configs.as_object()) {
-    std::wstringstream ws;
-    ws << powertoy_element.second;
-    if (modules().find(powertoy_element.first) != modules().end()) {
+    if (powertoy_element.first == L"general") {
+      if (is_process_elevated()) {
+        schedule_restart_as_non_elevated();
+        PostQuitMessage(0);
+      } else {
+        schedule_restart_as_elevated();
+        PostQuitMessage(0);
+      }
+    } else if (modules().find(powertoy_element.first) != modules().end()) {
+      std::wstringstream ws;
+      ws << powertoy_element.second;
       modules().at(powertoy_element.first).call_custom_action(ws.str());
     }
   }

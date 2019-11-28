@@ -91,11 +91,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     auto general_settings = get_general_settings();
     int rvalue = 0;
     if (is_process_elevated() ||
-      general_settings.at(L"run_elevated").as_bool() == false) {
+        general_settings.at(L"run_elevated").as_bool() == false ||
+        strcmp(lpCmdLine, "--dont-elevate") == 0) {
       result = runner();
     }
     else {
-      schedlue_restart_as_elevated();
+      schedule_restart_as_elevated();
       result = 0;
     }
   }
@@ -106,6 +107,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   }
   ReleaseMutex(runner_mutex);
   CloseHandle(runner_mutex);
-  restart_as_elevated_if_scheduled();
+  restart_if_scheduled();
   return result;
 }

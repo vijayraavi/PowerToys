@@ -247,6 +247,69 @@ bool run_elevated(const std::wstring& file, const std::wstring& params) {
   }
 }
 
+bool run_non_elevated(const std::wstring& file, const std::wstring& params) {
+  auto executable_args = file;
+  if (!params.empty()) {
+    executable_args += L" " + params;
+  }
+  
+  HWND hwnd = GetShellWindow();
+  if (!hwnd) {
+    return false;
+  }
+  DWORD pid;
+  GetWindowThreadProcessId(hwnd, &pid);
+
+  winrt::handle process{ OpenProcess(PROCESS_CREATE_PROCESS, FALSE, pid) };
+  if (!process) {
+    return false;
+  }
+
+  SIZE_T size = 0;
+
+  InitializeProcThreadAttributeList(nullptr, 1, 0, &size);
+  std::unique_ptr<char> pproc_buffer{ new char[size] };
+  auto pptal = reinterpret_cast<PPROC_THREAD_ATTRIBUTE_LIST>(pproc_buffer.get());
+  
+  if (!InitializeProcThreadAttributeList(pptal, 1, 0, &size)) {
+    return false;
+  }
+
+  HANDLE process_handle = process.get();
+  if (!pptal || !UpdateProcThreadAttribute(pptal,
+                                           0,
+                                           PROC_THREAD_ATTRIBUTE_PARENT_PROCESS,
+                                           &process_handle,
+                                           sizeof(process_handle),
+                                           nullptr,
+                                           nullptr)) {
+    return false;
+  }
+
+  STARTUPINFOEX siex = { 0 };
+  siex.lpAttributeList = pptal;
+  siex.StartupInfo.cb = sizeof(siex);
+  
+  PROCESS_INFORMATION process_info = { 0 };
+  auto succedded = CreateProcessW(file.c_str(),
+                                  const_cast<LPWSTR>(executable_args.c_str()),
+                                  nullptr,
+                                  nullptr,
+                                  FALSE,
+                                  EXTENDED_STARTUPINFO_PRESENT,
+                                  nullptr,
+                                  nullptr,
+                                  &siex.StartupInfo,
+                                  &process_info);
+  if (process_info.hProcess) {
+    CloseHandle(process_info.hProcess);
+  }
+  if (process_info.hThread) {
+    CloseHandle(process_info.hThread);
+  }
+  return succedded;
+}
+
 std::wstring get_process_path(HWND window) noexcept {
   const static std::wstring app_frame_host = L"ApplicationFrameHost.exe";
   DWORD pid{};
