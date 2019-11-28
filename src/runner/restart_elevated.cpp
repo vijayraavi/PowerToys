@@ -7,7 +7,7 @@ enum State {
   RestartAsElevated,
   RestartAsNonElevated
 };
-static State state = State::None;
+static State state = None;
 
 void schedule_restart_as_elevated() {
   state = RestartAsElevated;
@@ -15,6 +15,10 @@ void schedule_restart_as_elevated() {
 
 void schedule_restart_as_non_elevated() {
   state = RestartAsNonElevated;
+}
+
+bool is_restart_scheduled() {
+  return state != None;
 }
 
 bool restart_if_scheduled() {

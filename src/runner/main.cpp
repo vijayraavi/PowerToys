@@ -107,6 +107,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   }
   ReleaseMutex(runner_mutex);
   CloseHandle(runner_mutex);
-  restart_if_scheduled();
+  if (restart_if_scheduled()) {
+    if (restart_if_scheduled() == false) {
+      MessageBoxW(NULL, 
+                  is_process_elevated() ?
+                  L"Could not restart PowerToys as a non-elevated process!" :
+                  L"Could not restart PowerToys as an elevated process!",
+                  L"Error", MB_OK | MB_ICONERROR);
+      result = -1;
+    }
+  }
   return result;
 }
