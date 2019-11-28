@@ -38,12 +38,6 @@ int runner() {
   start_tray_icon();
   int result;
   try {
-
-    // Singletons initialization order needs to be preserved, first events and
-    // then modules to guarantee the reverse destruction order.
-    powertoys_events();
-    modules();
-
     chdir_current_executable();
     // Load Powertyos DLLS
     // For now only load known DLLs
@@ -88,6 +82,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   }
   int result = 0;
   try {
+    // Singletons initialization order needs to be preserved, first events and
+    // then modules to guarantee the reverse destruction order.
+    SystemMenuHelperInstace();
+    powertoys_events();
+    modules();
+
     auto general_settings = get_general_settings();
     int rvalue = 0;
     if (is_process_elevated() ||
