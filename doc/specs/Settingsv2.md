@@ -86,27 +86,30 @@ TODO: CLINT ADD IN MOCKS
 
 For terminology, lets get some lock for v2
 
-- X: X
+- **General screen:** these are global settings
 
 ### 4.1.1. General screen
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
-| 1 | Theme settings will be here | 0 |
-| 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
-| 3 | "About section" - See 4.1.3 for bottom of this | 0 |
-| 4 | Disable telemetry [#964](https://github.com/microsoft/PowerToys/issues/964)- Toggle Switch<br/>This will be wired up but disabled with a note of "PowerToys currently respects the Windows data & feedback setting"<br/>This will be enabled when v1.0 is fully released. | 0 |
+| 1 | Top will be a header labeled "General Settings" | 0 |
+| 2 | Theme settings (System Default, Light, Dark) | 0 |
+| 3 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
+| 4 | "About section" - See 4.1.3 for bottom of this | 0 |
+| 5 | Disable telemetry [#964](https://github.com/microsoft/PowerToys/issues/964)- Toggle Switch<br/>This will be wired up but disabled with a note of "PowerToys currently respects the Windows data & feedback setting"<br/>This will be enabled when v1.0 is fully released. | 0 |
+| 6 | Run at startup - Toggle switch | 0 |
+| 7 | Default Terminal / Shell settings for PowerToys - see [launcher spec](https://github.com/microsoft/PowerToys/wiki/Launcher) | 0 |
 
 ### 4.1.2. Individual PowerToys line item setting
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
-| 1 | First option will be to Enable the PowerToy - ToggleSwitch | 0 |
-| 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
-| 3 | Settings will be logically grouped together | 0 |
-| 4 | Top will be a header for the PowerToy| 0 |
-| 5 | Below header will be a **short** blurb of what the utility is | 0 |
-| 6 | Link to documentation for deep dives into features | 0 |
+| 1 | Top will be a header for the PowerToy| 0 |
+| 2 | Below header will be a **short** blurb of what the utility is | 0 |
+| 3 | Link to documentation for deep dives into features | 0 |
+| 4 | First option will be to Enable the PowerToy - ToggleSwitch | 0 |
+| 5 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
+| 6 | Settings will be logically grouped together | 0 |
 | x | x | 0 |
 | x | x | 0 |
 
@@ -120,13 +123,22 @@ For terminology, lets get some lock for v2
 | 4 | Privacy Statement link | 0 |
 | 5 | OSS Notice link - link to future NOTICE.MD file | 0 |
 
-### 4.1.3. Documentation / OOBE help
+### 4.1.4. Documentation / OOBE help
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
 | 1 | Each PowerToy will have a readme that quickly outlines each feature | 0 |
 | 2 | Each feature will have a short animated gif outlining functionality without speaking | 0 |
 | 3 | Below each gif, a text blob describing how to use it. | 0 |
+
+### 4.1.5. Settings control / layout
+
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Actual control will be powered by a NavView control | 0 |
+| 2 | Each logical feature will its own area | 0 |
+| 3 | File Explorer group technically is multiple PowerToys but be grouped as one item for end user ease of discoverability | 0 |
+| 4 | From [@zeealeid](https://github.com/zeealeid)'s mock, on the left side, we'll have the PT icon - PowerToys<br/>![alt text][fzMockSettings] | 2 |
 
 ### 4.1.x. Attribution for the community
 
