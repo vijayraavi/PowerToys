@@ -192,6 +192,6 @@ To start work ASAP, we'll do the following
 [ir2]: images/specs/settingsv2/imageResizer2.png "Image Resizer 2"
 [ir3]: images/specs/settingsv2/imageResizer3.png "Image Resizer 3"
 [fzMockSettings]: https://user-images.githubusercontent.com/54409865/70380170-dd5e9080-1958-11ea-840d-9d87b8056e9c.jpeg "zeealeid's possible setting screen"
-[niels9001MockSetting]: /specs/settingsv2/niels9001settingScreen.gif "Niels9001 possible setting screens"
+[niels9001MockSetting]: images/specs/settingsv2/niels9001settingScreen.gif "Niels9001 possible setting screens"
 
 <!-- [x]: images/specs/settingsv2/x.png "x" -->
