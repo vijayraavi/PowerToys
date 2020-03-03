@@ -28,6 +28,14 @@ See issue [#889](https://github.com/microsoft/PowerToys/issues/889) and [#243](h
 
 See Section 2.
 
+Also our community has created fantastic UX mocks, both in functional XAML and image form.  [@zeealeid](https://github.com/zeealeid) created this [mock for FancyZones](https://github.com/microsoft/PowerToys/issues/891#issuecomment-562882994) but it also has Settings.  It clearly shows some really great fundamentals to help onboarding.
+
+[@niels9001](https://github.com/niels9001) has also created a [wonderful functional XAML application with WinUI3](https://github.com/niels9001/PowerToysUXWinUI3Alpha)
+
+![alt text][fzMockSettings]
+
+![alt text][niels9001MockSetting]
+
 ## 1.5. Goals/Non-Goals
 
 ### Goals
@@ -35,14 +43,14 @@ See Section 2.
 - Allow us to create reusable componets
 - Solve Issue [#243](https://github.com/microsoft/PowerToys/issues/243)
 - Accessibility
-- Support theming
+- Support theming (system default, High contrast, light, dark)
 - Localized ready UX
 
 ### Non-goals
 
 - Improve OOBE for first-time user (will be addressed in [#1285](https://github.com/microsoft/PowerToys/issues/1285))
   - This doesn't mean the experience won't be more straight forward
- - Add in search like Windows Setting Search experience for this iteration.
+- Add in search like Windows Setting Search experience for this iteration.
 
 We will discuss what currently is there for a knowledge base.
 
@@ -55,7 +63,7 @@ We will discuss what currently is there for a knowledge base.
 
 ## 2.2. Other screens
 
-We need to port ImageResizer
+We need to port ImageResizer and others.  Here is the ImageResizer existing screens that are currently blocked.
 
 ![alt text][ir1]
 ![alt text][ir2]
@@ -80,12 +88,11 @@ For terminology, lets get some lock for v2
 
 - X: X
 
-### 4.1.1. FZ Editor Dialog window
+### 4.1.1. General screen
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
-| x | x | 0 |
-
+| x | Settings  | 0 |
 
 ## 4.2. Measure Requirements
 
@@ -104,5 +111,7 @@ For terminology, lets get some lock for v2
 [ir1]: images/specs/settingsv2/imageResizer1.png "Image Resizer 1"
 [ir2]: images/specs/settingsv2/imageResizer2.png "Image Resizer 2"
 [ir3]: images/specs/settingsv2/imageResizer3.png "Image Resizer 3"
+[fzMockSettings]: https://user-images.githubusercontent.com/54409865/70380170-dd5e9080-1958-11ea-840d-9d87b8056e9c.jpeg "zeealeid's possible setting screen"
+[niels9001MockSetting]: /specs/settingsv2/niels9001settingScreen.gif "Niels9001 possible setting screens"
 
 <!-- [x]: images/specs/settingsv2/x.png "x" -->
