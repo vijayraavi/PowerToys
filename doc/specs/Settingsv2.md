@@ -8,6 +8,12 @@
 
 # TODO's
 
+- FZ setting section
+- Shortcut guide section
+- PowerRename section
+- ImageResizer section
+- Window Walker section
+
 # 1. Overview
 
 ## 1.1. Elevator Pitch / Narrative
@@ -51,6 +57,7 @@ Also our community has created fantastic UX mocks, both in functional XAML and i
 - Improve OOBE for first-time user (will be addressed in [#1285](https://github.com/microsoft/PowerToys/issues/1285))
   - This doesn't mean the experience won't be more straight forward
 - Add in search like Windows Setting Search experience for this iteration.
+- launcher and keyboard remapper work will be done as part of their active development
 
 We will discuss what currently is there for a knowledge base.
 
@@ -94,7 +101,7 @@ For terminology, lets get some lock for v2
 | --- | ----------- | -------- |
 | 1 | Top will be a header labeled "General Settings" | 0 |
 | 2 | Theme settings (System Default, Light, Dark) | 0 |
-| 3 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
+| 3 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.6 for more) | 0 |
 | 4 | "About section" - See 4.1.3 for bottom of this | 0 |
 | 5 | Disable telemetry [#964](https://github.com/microsoft/PowerToys/issues/964)- Toggle Switch<br/>This will be wired up but disabled with a note of "PowerToys currently respects the Windows data & feedback setting"<br/>This will be enabled when v1.0 is fully released. | 0 |
 | 6 | Run at startup - Toggle switch | 0 |
@@ -108,7 +115,7 @@ For terminology, lets get some lock for v2
 | 2 | Below header will be a **short** blurb of what the utility is | 0 |
 | 3 | Link to documentation for deep dives into features | 0 |
 | 4 | First option will be to Enable the PowerToy - ToggleSwitch | 0 |
-| 5 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
+| 5 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.6 for more) | 0 |
 | 6 | Settings will be logically grouped together | 0 |
 | x | x | 0 |
 | x | x | 0 |
@@ -140,7 +147,7 @@ For terminology, lets get some lock for v2
 | 3 | File Explorer group technically is multiple PowerToys but be grouped as one item for end user ease of discoverability | 0 |
 | 4 | From [@zeealeid](https://github.com/zeealeid)'s mock, on the left side, we'll have the PT icon - PowerToys<br/>![alt text][fzMockSettings] | 2 |
 
-### 4.1.x. Attribution for the community
+### 4.1.6. Attribution for the community
 
 Based on the roots of the original PowerToys, we are a suite of applications. Some utilities were not developed in house, others forks of the community's great work and we should acknowledge their authors.  From [#862](https://github.com/microsoft/PowerToys/issues/862), 4.1.1.2 and 4.1.2.2 requirement, we want provide attribution for their work.
 
@@ -157,6 +164,41 @@ This will be a hybrid of the following
 - Documentation from inside the PowerToy repository
   - This will be a deeper dive in others that have helped out each utility
   - PowerToy dev team will be acknowledged for their work here.
+
+### 4.1.7 FancyZone
+
+TODO
+
+### 4.1.8 PowerRename
+
+TODO
+
+### 4.1.9 Shortcut Guide
+
+TODO
+
+### 4.1.10 File Explorer
+
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Enable Markdown preview pane support - Toggle switch | 0 |
+| 1 | Enable SVG preview pane support - Toggle switch | 0 |
+
+### 4.1.11 Shortcut Guide
+
+TODO
+
+### 4.1.12 Launcher
+
+See [launcher spec](https://github.com/microsoft/PowerToys/wiki/Launcher)
+
+This is a non-dev goal for implementation as part of the initial switch, this work will be done during active development of the feature itself.
+
+### 4.1.13 Keyboard remapper
+
+See [Keyboard remapper spec](https://github.com/microsoft/PowerToys/wiki/Keyboard-Manager)
+
+This is a non-dev goal for implementation as part of the initial switch, this work will be done during active development of the feature itself.
 
 ## 4.2. Measure Requirements
 
