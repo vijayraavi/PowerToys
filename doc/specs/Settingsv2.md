@@ -92,7 +92,46 @@ For terminology, lets get some lock for v2
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
-| x | Settings  | 0 |
+| 1 | Theme settings will be here | 0 |
+| 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
+| 3 | "About section" - See 4.1.3 for bottom of this | 0 |
+| x | x | 0 |
+
+### 4.1.2. Individual PowerToys line item setting
+
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | First option will be to Enable the PowerToy - ToggleSwitch | 0 |
+| 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0|
+| x | x | 0 |
+
+### 4.1.3. About section
+
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| x | Report bug link | 0 |
+| x | Request feature link | 0 |
+| x | Privacy Statement link | 0 |
+| x | OSS Notice link - link to future NOTICE.MD file | 0 |
+| x | x | 0 |
+
+### 4.1.x. Attribution for the community
+
+Based on the roots of the original PowerToys, we are a suite of applications. Some utilities were not developed in house, others forks of the community's great work and we should acknowledge their authors.  From [#862](https://github.com/microsoft/PowerToys/issues/862), 4.1.1.2 and 4.1.2.2 requirement, we want provide attribution for their work.
+
+This is primarily to highlight community contributions, not the PowerToy core team.
+
+This will be a hybrid of the following
+
+- An item inside the Setting screen at the bottom for each section.
+  - This will be for the primary author(s) and drivers.
+  - It will consist of:
+    - Author(s) names
+    - Link to where we forked the code base
+    - Statement of why you should try out their variant
+- Documentation from inside the PowerToy repository
+  - This will be a deeper dive in others that have helped out each utility
+  - PowerToy dev team will be acknowledged for their work here.
 
 ## 4.2. Measure Requirements
 
@@ -102,9 +141,25 @@ For terminology, lets get some lock for v2
 
 # 5. Mocks
 
-# 6. Edge cases
+# 6. Roadmap to the end state
 
-# 7. Existing reference material
+To start work ASAP, we'll do the following
+
+## Now
+
+1. Add a toggle on the React Setting app that shows up if end user is on 19H1 or higher
+1. Use a XAML Island WinUI 2.2 for new setting area
+1. Start entire UI be transitioned over
+
+## Soon
+
+1. Transition to WinUI 3 XAML Island when first available
+1. All new Settings UI goes in the WinUI version (Launcher, ImageResizer, Keyboard remapper, ...)
+
+## Future
+
+1. Transition to WinUI 3 Desktop application when first available
+1. Remove ReactJS WebView settings
 
 [fzv1]: images/specs/settingsv2/fancyZones.png "x"
 [generalv1]: images/specs/settingsv2/generalv1.png "x"
