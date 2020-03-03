@@ -95,25 +95,38 @@ For terminology, lets get some lock for v2
 | 1 | Theme settings will be here | 0 |
 | 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
 | 3 | "About section" - See 4.1.3 for bottom of this | 0 |
-| x | x | 0 |
+| 4 | Disable telemetry [#964](https://github.com/microsoft/PowerToys/issues/964)- Toggle Switch<br/>This will be wired up but disabled with a note of "PowerToys currently respects the Windows data & feedback setting"<br/>This will be enabled when v1.0 is fully released. | 0 |
 
 ### 4.1.2. Individual PowerToys line item setting
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
 | 1 | First option will be to Enable the PowerToy - ToggleSwitch | 0 |
-| 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0|
+| 2 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.x for more) | 0 |
+| 3 | Settings will be logically grouped together | 0 |
+| 4 | Top will be a header for the PowerToy| 0 |
+| 5 | Below header will be a **short** blurb of what the utility is | 0 |
+| 6 | Link to documentation for deep dives into features | 0 |
+| x | x | 0 |
 | x | x | 0 |
 
 ### 4.1.3. About section
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
-| x | Report bug link | 0 |
-| x | Request feature link | 0 |
-| x | Privacy Statement link | 0 |
-| x | OSS Notice link - link to future NOTICE.MD file | 0 |
-| x | x | 0 |
+| 1 | Version Number pulled from application | 0 |
+| 2 | Report bug link | 0 |
+| 3 | Request feature link | 0 |
+| 4 | Privacy Statement link | 0 |
+| 5 | OSS Notice link - link to future NOTICE.MD file | 0 |
+
+### 4.1.3. Documentation / OOBE help
+
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Each PowerToy will have a readme that quickly outlines each feature | 0 |
+| 2 | Each feature will have a short animated gif outlining functionality without speaking | 0 |
+| 3 | Below each gif, a text blob describing how to use it. | 0 |
 
 ### 4.1.x. Attribution for the community
 
