@@ -9,8 +9,6 @@
 # TODO's
 
 - FZ setting section
-- Shortcut guide section
-- PowerRename section
 - ImageResizer section
 - Window Walker section
 
@@ -118,7 +116,6 @@ For terminology, lets get some lock for v2
 | 5 | Attribution at the bottom will be provided [#862](https://github.com/microsoft/PowerToys/issues/862) (see 4.1.6 for more) | 0 |
 | 6 | Settings will be logically grouped together | 0 |
 | x | x | 0 |
-| x | x | 0 |
 
 ### 4.1.3. About section
 
@@ -171,11 +168,26 @@ TODO
 
 ### 4.1.8 PowerRename
 
-TODO
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Remember settings between batches - Toggle switch | 0 |
+| 2 | Enable auto-complete and auto-suggestion - Toggle switch | 0 |
+| 3 | Maximum number of suggestions - Number box | 0 |
+| 4 | If 2 is enabled, enable 3 | 0 |
+| 5 | Show icon in context menu - Toggle switch | 2 |
+| 6 | PowerRename only shows in extended context menu (Shift+Right-click) - Toggle | 0 |
+| 7 | Grouping: Search results (1, 2, 3) | 0 |
+| 8 | Grouping: Shell integration (5, 6) | 0 |
 
 ### 4.1.9 Shortcut Guide
 
-TODO
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Delay before showing - Number box | 0 |
+| 2 | Future - Use acrylic - Toggle switch | 0 |
+| 3 | Background Opacity % - Number box | 0 |
+| 4 | Future - Fade in time - Number box | 0 |
+| 5 | Future - Fade out time - Number box | 0 |
 
 ### 4.1.10 File Explorer
 
@@ -184,9 +196,14 @@ TODO
 | 1 | Enable Markdown preview pane support - Toggle switch | 0 |
 | 1 | Enable SVG preview pane support - Toggle switch | 0 |
 
-### 4.1.11 Shortcut Guide
+### 4.1.11 Image Resizer
 
-TODO
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Grouping Sizes: - Custom control <br/>![alt text][ir1]| 0 |
+| 2 | Grouping with following settings <br/> ![alt text][ir2] | 0 |
+| 3 | Grouping Default file names <br/>![alt text][ir3] | 0 |
+| 4 | Ability to delete and add in sizes | 2 |
 
 ### 4.1.12 Launcher
 
@@ -208,9 +225,11 @@ This is a non-dev goal for implementation as part of the initial switch, this wo
 
 # 5. Mocks
 
+// CLINT TO DO MORE
+
 # 6. Roadmap to the end state
 
-To start work ASAP, we'll do the following
+To start work ASAP, we'll do the following below
 
 ## Now
 
@@ -228,8 +247,14 @@ To start work ASAP, we'll do the following
 1. Transition to WinUI 3 Desktop application when first available
 1. Remove ReactJS WebView settings
 
-[fzv1]: images/specs/settingsv2/fancyZones.png "x"
-[generalv1]: images/specs/settingsv2/generalv1.png "x"
+# 7. Open Questions
+
+1. What is the user friendly term for "shell".
+1. in 4.1.8.5 for power rename "show icon", is this a setting we need?
+1. is 4.1.11.4 a must have, it is a regression for what Image Resizer does now.
+
+[fzv1]: images/specs/settingsv2/fancyZones.png "Fancy Zones current setting"
+[generalv1]: images/specs/settingsv2/generalv1.png "General current settings"
 [ir1]: images/specs/settingsv2/imageResizer1.png "Image Resizer 1"
 [ir2]: images/specs/settingsv2/imageResizer2.png "Image Resizer 2"
 [ir3]: images/specs/settingsv2/imageResizer3.png "Image Resizer 3"
