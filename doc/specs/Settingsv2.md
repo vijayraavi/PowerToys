@@ -9,8 +9,6 @@
 # TODO's
 
 - FZ setting section
-- ImageResizer section
-- Window Walker section
 
 # 1. Overview
 
@@ -104,6 +102,7 @@ For terminology, lets get some lock for v2
 | 5 | Disable telemetry [#964](https://github.com/microsoft/PowerToys/issues/964)- Toggle Switch<br/>This will be wired up but disabled with a note of "PowerToys currently respects the Windows data & feedback setting"<br/>This will be enabled when v1.0 is fully released. | 0 |
 | 6 | Run at startup - Toggle switch | 0 |
 | 7 | Default Terminal / Shell settings for PowerToys - see [launcher spec](https://github.com/microsoft/PowerToys/wiki/Launcher) | 0 |
+| 8 | Group Enable: Each powertoy will have a toggle switche to enable them here.  This is a difference from the old way | 0 |
 
 ### 4.1.2. Individual PowerToys line item setting
 
@@ -162,11 +161,13 @@ This will be a hybrid of the following
   - This will be a deeper dive in others that have helped out each utility
   - PowerToy dev team will be acknowledged for their work here.
 
-### 4.1.7 FancyZone
+### 4.1.7. FancyZone
 
-TODO
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| x | x | 0 |
 
-### 4.1.8 PowerRename
+### 4.1.8. PowerRename
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
@@ -179,7 +180,7 @@ TODO
 | 7 | Grouping: Search results (1, 2, 3) | 0 |
 | 8 | Grouping: Shell integration (5, 6) | 0 |
 
-### 4.1.9 Shortcut Guide
+### 4.1.9. Shortcut Guide
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
@@ -189,14 +190,14 @@ TODO
 | 4 | Future - Fade in time - Number box | 0 |
 | 5 | Future - Fade out time - Number box | 0 |
 
-### 4.1.10 File Explorer
+### 4.1.10. File Explorer
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
 | 1 | Enable Markdown preview pane support - Toggle switch | 0 |
 | 1 | Enable SVG preview pane support - Toggle switch | 0 |
 
-### 4.1.11 Image Resizer
+### 4.1.11. Image Resizer
 
 | No. | Requirement | Priority |
 | --- | ----------- | -------- |
@@ -205,17 +206,26 @@ TODO
 | 3 | Grouping Default file names <br/>![alt text][ir3] | 0 |
 | 4 | Ability to delete and add in sizes | 2 |
 
-### 4.1.12 Launcher
+### 4.1.12. Launcher
 
 See [launcher spec](https://github.com/microsoft/PowerToys/wiki/Launcher)
 
 This is a non-dev goal for implementation as part of the initial switch, this work will be done during active development of the feature itself.
 
-### 4.1.13 Keyboard remapper
+### 4.1.13. Keyboard remapper
 
 See [Keyboard remapper spec](https://github.com/microsoft/PowerToys/wiki/Keyboard-Manager)
 
 This is a non-dev goal for implementation as part of the initial switch, this work will be done during active development of the feature itself.
+
+### 4.1.14. Window Walker
+
+| No. | Requirement | Priority |
+| --- | ----------- | -------- |
+| 1 | Override Win-Tab - toggle switch | 0 |
+| 1 | Custom Shortcut to launch - custom control | 0 |
+
+Currently this is not an option to override, but different users have different preferences.
 
 ## 4.2. Measure Requirements
 
@@ -252,13 +262,14 @@ To start work ASAP, we'll do the following below
 1. What is the user friendly term for "shell".
 1. in 4.1.8.5 for power rename "show icon", is this a setting we need?
 1. is 4.1.11.4 a must have, it is a regression for what Image Resizer does now.
+1. Does Shortcut guide need a theme setting for itself
 
 [fzv1]: images/specs/settingsv2/fancyZones.png "Fancy Zones current setting"
 [generalv1]: images/specs/settingsv2/generalv1.png "General current settings"
 [ir1]: images/specs/settingsv2/imageResizer1.png "Image Resizer 1"
 [ir2]: images/specs/settingsv2/imageResizer2.png "Image Resizer 2"
 [ir3]: images/specs/settingsv2/imageResizer3.png "Image Resizer 3"
-[fzMockSettings]: https://user-images.githubusercontent.com/54409865/70380170-dd5e9080-1958-11ea-840d-9d87b8056e9c.jpeg "zeealeid's possible setting screen"
-[niels9001MockSetting]: images/specs/settingsv2/niels9001settingScreen.gif "Niels9001 possible setting screens"
+[fzMockSettings]: https://user-images.githubusercontent.com/54409865/70380170-dd5e9080-1958-11ea-840d-9d87b8056e9c.jpeg "@zeealeid's possible setting screen"
+[niels9001MockSetting]: images/specs/settingsv2/niels9001settingScreen.gif "@Niels9001 possible setting screens"
 
 <!-- [x]: images/specs/settingsv2/x.png "x" -->
